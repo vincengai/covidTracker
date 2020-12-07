@@ -9,6 +9,23 @@ const url = "https://covid19.mathdro.id/api";
 // this await asynchronous function deals w/ promises the same way as .then && .catch
 // easier to read and write
 
+// const countries = [a,b,c,d,e]
+// const globalData = [];
+
+// export const globalData = async() => {
+//     try {
+//         for (let country of countries) {
+//         const url = `https://covid19.mathdro.id/${country}`;
+            
+//             globalData.push(await axios.get(url))
+//         }
+//         return globalData
+
+//     } catch (error) {
+
+//     }
+// }
+
 export const fetchData = async () => {
     try {
         const { data } = await axios.get(url);

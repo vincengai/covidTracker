@@ -15,15 +15,14 @@ class App extends React.Component {
     async componentDidMount() {
         // await because fetchData is an asynchronous function
         const fetchedData = await fetchData();
-        // After you fetched the data from API Call, 
-        // you setState on the fetchedData 
+        // After you fetched the data from API Call, you setState on the fetchedData 
         this.setState( {data: fetchedData} )
     }
 
 
     render() {
         const {data} = this.state;
-        
+
         return (
             <div className={styles.container}>
                 <Cards data={data}/>
