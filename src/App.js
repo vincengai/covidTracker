@@ -1,16 +1,28 @@
 import React from 'react';
-
+import { Cards, Chart, CountryPicker } from "./components/";
 // import Cards from './components/Cards/Cards';
 // import Chart from './components/Chart/Chart';
 // import CountryPicker from './components/CountryPicker/CountryPicker';
+import styles from './App.module.css';
+import { fetchData } from './api';
 
-import { Cards, Chart, CountryPicker} from './components/';
 
 class App extends React.Component {
+
+    async componentDidMount() {
+        // await because fetchData is an asynchronous function
+        const data = await fetchData();
+
+        console.log(data)
+    }
+
+
     render() {
         return (
-            <div>
-                <h1> App React App </h1>
+            <div className={styles.container}>
+                <Cards />
+                <CountryPicker />
+                <Chart />
             </div>
         )
     }
