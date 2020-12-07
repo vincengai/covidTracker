@@ -8,12 +8,16 @@ import { fetchData } from './api';
 
 
 class App extends React.Component {
+    state = {
+        data: {},   
+    }
 
     async componentDidMount() {
         // await because fetchData is an asynchronous function
-        const data = await fetchData();
-
-        console.log(data)
+        const fetchedData = await fetchData();
+        // After you fetched the data from API Call, 
+        // you setState on the fetchedData 
+        this.setState( {data: fetchedData} )
     }
 
 
