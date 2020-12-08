@@ -10,23 +10,26 @@ import { fetchData } from './api';
 class App extends React.Component {
     state = {
         data: {},   
+        dailyData: {}
     }
 
     async componentDidMount() {
         // await because fetchData is an asynchronous function
-        const fetchedData = await fetchData();
         // After you fetched the data from API Call, you setState on the fetchedData 
+        const fetchedData = await fetchData();
         this.setState( {data: fetchedData} )
-        console.log('componentDidMount')
+
+        // const fetchedDailyData = await fetchDailyData();
+        // this.setState({ dailyData: fetchedDailyData });
     }
 
 
     render() {
-        const {data} = this.state;
-        console.log('render')
+        const {data, dailyData} = this.state;
+        
         return (
             <div className={styles.container}>
-                <Cards data={data}/>
+                <Cards data={data} dailyData={dailyData}/>
                 <CountryPicker />
                 <Chart />
             </div>
