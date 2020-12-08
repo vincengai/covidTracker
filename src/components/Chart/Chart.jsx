@@ -5,11 +5,11 @@ import { fetchDailyData } from "../../api";
 
 import styles from "./Chart.module.css";
 
-const Chart = () => {
+const Chart = (country) => {
   //   // you set your State using const
   //   // dailyData will be the state, setDailyData will be setting the state
   //   // useState(some value) : some value will be the initial value youre setting state to
-  //   const [dailyData, setDailyData] = useState([]);
+
   const [dailyData, setDailyData] = useState([]);
 
   useEffect(() => {
@@ -17,6 +17,7 @@ const Chart = () => {
       const initialDailyData = await fetchDailyData();
 
       setDailyData(initialDailyData);
+
     };
 
     fetchDailyDataApi();
@@ -24,7 +25,7 @@ const Chart = () => {
 
 
 
-  const lineChart = dailyData.length ? (
+  const lineChart = dailyData[0] ? (
     <Line
       data={{
         labels: dailyData.map(({ date }) =>

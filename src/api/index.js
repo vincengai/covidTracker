@@ -4,7 +4,6 @@ import axios from 'axios';
 
 const url = "https://covid19.mathdro.id/api";
 
-
 //asynch fat arrow function 
 // this await asynchronous function deals w/ promises the same way as .then && .catch
 // easier to read and write
@@ -26,9 +25,15 @@ const url = "https://covid19.mathdro.id/api";
 //     }
 // }
 
-export const fetchData = async () => {
+export const fetchData = async (country) => {
+    let changeableUrl = url;
+
+    if (country) {
+        changeableUrl = `${url}/countries/${country}`;
+    }
+
     try {
-        const { data } = await axios.get(url);
+        const { data } = await axios.get(changeableUrl);
 
         // Data is the POJO of received data
         // modify the POJO to select the Keys you wanted to be returned
@@ -66,3 +71,13 @@ export const fetchCountries = async () => {
         console.log(error)
     }
 }
+
+// export const fetchCountry = async() => {
+//     try {
+//         const { data } = await axios.get('https://covid19.mathdro.id/api/countries/')
+
+//         return data.map( ({confirmed, recovered, deaths}) => ({confirmed, recovered, deaths}))
+//     } catch (error) {
+        
+//     }
+// }
