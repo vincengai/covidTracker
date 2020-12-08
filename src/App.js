@@ -18,27 +18,25 @@ class App extends React.Component {
         // After you fetched the data from API Call, you setState on the fetchedData 
         const fetchedData = await fetchData();
         this.setState( {data: fetchedData} )
-
-        // const fetchedDailyData = await fetchDailyData();
-        // this.setState({ dailyData: fetchedDailyData });
     }
 
     handleCountryChange =  async (country) => {
-        //first FetchData 
+        //fetch data
         const fetchedData = await fetchData(country);
+        // set State so it can be passed to child components
         this.setState( {data: fetchedData, country: country} )
 
     }
 
 
     render() {
-        const {data, dailyData, country} = this.state;
+        const {data, country} = this.state;
         
         return (
             <div className={styles.container}>
-                <Cards data={data} dailyData={dailyData} country={country}/>
+                <Cards data={data}/>
                 <CountryPicker handleCountryChange={this.handleCountryChange}/>
-                <Chart country={country}/>
+                <Chart data={data} country={country}/>
             </div>
         )
     }

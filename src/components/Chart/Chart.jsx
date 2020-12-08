@@ -5,7 +5,7 @@ import { fetchDailyData } from "../../api";
 
 import styles from "./Chart.module.css";
 
-const Chart = (country) => {
+const Chart = ({data, country}) => {
   //   // you set your State using const
   //   // dailyData will be the state, setDailyData will be setting the state
   //   // useState(some value) : some value will be the initial value youre setting state to
@@ -13,8 +13,8 @@ const Chart = (country) => {
   const [dailyData, setDailyData] = useState([]);
 
   useEffect(() => {
-    const fetchDailyDataApi = async () => {
-      const initialDailyData = await fetchDailyData();
+    const fetchDailyDataApi = async (country) => {
+      const initialDailyData = await fetchDailyData(country);
 
       setDailyData(initialDailyData);
 
@@ -56,6 +56,30 @@ const Chart = (country) => {
       }}
     />
   ) : null;
+
+  const barChart = (
+    confirmed ? (
+      <Bar 
+        data={{
+          labels: ['Infected', 'Recovered', 'Deaths'],
+          datasets: [{
+            label: 'People',
+            backgroundColor: [
+              'rgba(0,0,255, 0.5)',
+              'rgba(0,255,0, 0.5)',
+              'rgba(255,0,0, 0.5)',
+             ],
+            data:[data.confirmed, data.recovered, data.deaths]
+          }]
+        }}
+        
+        options={{
+          legend: { display : false},
+          title: {display: true, text: `Current state in ${country}`}
+        }}
+      />
+    ) : null;
+  );
 
   return (
     <div className={styles.container}>
