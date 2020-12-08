@@ -10,21 +10,21 @@ const Chart = () => {
   //   // dailyData will be the state, setDailyData will be setting the state
   //   // useState(some value) : some value will be the initial value youre setting state to
   //   const [dailyData, setDailyData] = useState([]);
-  const [dailyData, setDailyData] = useState({});
+  const [dailyData, setDailyData] = useState([]);
 
   useEffect(() => {
-    const fetchMyAPI = async () => {
+    const fetchDailyDataApi = async () => {
       const initialDailyData = await fetchDailyData();
 
       setDailyData(initialDailyData);
     };
 
-    fetchMyAPI();
+    fetchDailyDataApi();
   }, []);
 
 
 
-  const lineChart = dailyData[0] ? (
+  const lineChart = dailyData.length ? (
     <Line
       data={{
         labels: dailyData.map(({ date }) =>
@@ -55,7 +55,7 @@ const Chart = () => {
       }}
     />
   ) : null;
-      console.log('render')
+
   return (
     <div className={styles.container}>
       {lineChart}
