@@ -4,19 +4,22 @@
 }
 
 .card {
+    /* 0 top and bottom , 2% left and right */
+    /* since we are using Material-UI , !important to overwrite it */
     margin: 0 2% !important
 }
 
 .infected {
+    /* rgba , 0.5 is the transparency */
     border-bottom: 10px solid rgba(0,0,255, 0.5);
 }
 
 .recovered {
-    border-bottom: 10px solid rgba(0,0,255, 0.5);
+    border-bottom: 10px solid rgba(0,255,0, 0.5);
 
 }
 
 .deaths {
-    border-bottom: 10px solid rgba(0,0,255, 0.5);
+    border-bottom: 10px solid rgba(255,0,0, 0.5);
 
 }
