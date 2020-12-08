@@ -17,12 +17,13 @@ class App extends React.Component {
         const fetchedData = await fetchData();
         // After you fetched the data from API Call, you setState on the fetchedData 
         this.setState( {data: fetchedData} )
+        console.log('componentDidMount')
     }
 
 
     render() {
         const {data} = this.state;
-
+        console.log('render')
         return (
             <div className={styles.container}>
                 <Cards data={data}/>
