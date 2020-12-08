@@ -3,3 +3,10 @@
     justify-content: center;
     width: 85%;
 }
+
+@media (max-width: 770pc) {
+    .container {
+        width: 100%;
+    }
+    
+}

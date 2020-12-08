@@ -57,8 +57,9 @@ const Chart = ({data, country}) => {
     />
   ) : null;
 
+  console.log(data.confirmed, data.deaths)
   const barChart = (
-    confirmed ? (
+    data.confirmed ? (
       <Bar 
         data={{
           labels: ['Infected', 'Recovered', 'Deaths'],
@@ -69,7 +70,7 @@ const Chart = ({data, country}) => {
               'rgba(0,255,0, 0.5)',
               'rgba(255,0,0, 0.5)',
              ],
-            data:[data.confirmed, data.recovered, data.deaths]
+            data:[data.confirmed.value, data.recovered.value, data.deaths.value]
           }]
         }}
         
@@ -78,12 +79,12 @@ const Chart = ({data, country}) => {
           title: {display: true, text: `Current state in ${country}`}
         }}
       />
-    ) : null;
+    ) : null
   );
 
   return (
     <div className={styles.container}>
-      {lineChart}
+      {country ? barChart : lineChart}
     </div>
   );
 };
