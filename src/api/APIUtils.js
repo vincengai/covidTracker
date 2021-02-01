@@ -41,7 +41,7 @@ export const fetchData = async (country) => {
             confirmed: data.confirmed,
             recovered: data.recovered,
             deaths: data.deaths,
-            lastUpdate: data.lastUpdate
+            lastUpdate: data.lastUpdate,
         }
 
         return modifiedData;
