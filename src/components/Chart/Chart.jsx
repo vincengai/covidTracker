@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Line, Bar } from "react-chartjs-2";
-
-import { fetchDailyData } from "../../api";
+import { fetchDailyData } from "../../api/APIUtils";
 
 import styles from "./Chart.module.css";
 
@@ -17,7 +16,6 @@ const Chart = ({data, country}) => {
       const initialDailyData = await fetchDailyData(country);
 
       setDailyData(initialDailyData);
-
     };
 
     fetchDailyDataApi();
@@ -57,7 +55,6 @@ const Chart = ({data, country}) => {
     />
   ) : null;
 
-  console.log(data.confirmed, data.deaths)
   const barChart = (
     data.confirmed ? (
       <Bar 
